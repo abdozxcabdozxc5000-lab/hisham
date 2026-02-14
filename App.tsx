@@ -40,21 +40,21 @@ const App: React.FC = () => {
          <div className="absolute top-1/2 left-0 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-4 z-10 flex flex-col flex-grow max-w-4xl print:pb-32">
+      <div className="container mx-auto px-4 z-10 flex flex-col flex-grow max-w-4xl print:pb-20">
         <Header onPrint={handlePrint} />
         
-        <main className="flex-grow py-8">
+        <main className="flex-grow py-8 print:py-0">
           <AddItemForm onAdd={handleAddItem} />
           
           <div className="relative">
-            {/* Corner borders similar to the image card style */}
-            <div className="hidden md:block absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-gold-500 rounded-tl-lg"></div>
-            <div className="hidden md:block absolute -top-4 -right-4 w-8 h-8 border-t-2 border-r-2 border-gold-500 rounded-tr-lg"></div>
+            {/* Corner borders similar to the image card style - hide in print to save space */}
+            <div className="hidden md:block print:hidden absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-gold-500 rounded-tl-lg"></div>
+            <div className="hidden md:block print:hidden absolute -top-4 -right-4 w-8 h-8 border-t-2 border-r-2 border-gold-500 rounded-tr-lg"></div>
             
             <OrderList items={items} onDelete={handleDeleteItem} />
             
-            <div className="hidden md:block absolute -bottom-4 -left-4 w-8 h-8 border-b-2 border-l-2 border-gold-500 rounded-bl-lg"></div>
-            <div className="hidden md:block absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-gold-500 rounded-br-lg"></div>
+            <div className="hidden md:block print:hidden absolute -bottom-4 -left-4 w-8 h-8 border-b-2 border-l-2 border-gold-500 rounded-bl-lg"></div>
+            <div className="hidden md:block print:hidden absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-gold-500 rounded-br-lg"></div>
           </div>
         </main>
 
