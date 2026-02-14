@@ -40,7 +40,7 @@ const App: React.FC = () => {
          <div className="absolute top-1/2 left-0 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-4 z-10 flex flex-col flex-grow max-w-4xl">
+      <div className="container mx-auto px-4 z-10 flex flex-col flex-grow max-w-4xl print:pb-32">
         <Header onPrint={handlePrint} />
         
         <main className="flex-grow py-8">
