@@ -89,12 +89,8 @@ const App: React.FC = () => {
               </div>
             </main>
           </div>
-
-          {/* Footer Spacer Group - Reserves space at bottom of EVERY page for the fixed footer */}
-          <div className="hidden print:table-footer-group">
-             <div className="h-[20mm]"></div>
-          </div>
         
+          {/* Removed footer spacer, using @page margin instead */}
         </div>
 
         {/* The actual Fixed Footer */}
