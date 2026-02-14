@@ -33,8 +33,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col relative print-white-bg">
-      {/* Background decoration (hidden in print) */}
+    <div className="min-h-screen flex flex-col relative bg-dark-900">
+      {/* Background decoration (hidden in print to keep it clean black, or remove no-print to show blurs) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden no-print">
          <div className="absolute -top-20 -right-20 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
          <div className="absolute top-1/2 left-0 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl"></div>
@@ -48,13 +48,13 @@ const App: React.FC = () => {
           
           <div className="relative">
             {/* Corner borders similar to the image card style */}
-            <div className="hidden md:block absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-gold-500 rounded-tl-lg no-print"></div>
-            <div className="hidden md:block absolute -top-4 -right-4 w-8 h-8 border-t-2 border-r-2 border-gold-500 rounded-tr-lg no-print"></div>
+            <div className="hidden md:block absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-gold-500 rounded-tl-lg"></div>
+            <div className="hidden md:block absolute -top-4 -right-4 w-8 h-8 border-t-2 border-r-2 border-gold-500 rounded-tr-lg"></div>
             
             <OrderList items={items} onDelete={handleDeleteItem} />
             
-            <div className="hidden md:block absolute -bottom-4 -left-4 w-8 h-8 border-b-2 border-l-2 border-gold-500 rounded-bl-lg no-print"></div>
-            <div className="hidden md:block absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-gold-500 rounded-br-lg no-print"></div>
+            <div className="hidden md:block absolute -bottom-4 -left-4 w-8 h-8 border-b-2 border-l-2 border-gold-500 rounded-bl-lg"></div>
+            <div className="hidden md:block absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-gold-500 rounded-br-lg"></div>
           </div>
         </main>
 

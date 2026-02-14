@@ -32,13 +32,13 @@ export const OrderList: React.FC<OrderListProps> = ({ items, onDelete }) => {
             <li 
               key={item.id} 
               className={`grid grid-cols-12 gap-4 items-center p-3 rounded-lg hover:bg-gold-500/10 transition-colors group ${
-                  index % 2 === 0 ? 'bg-white/5 print:bg-gray-100' : 'bg-transparent'
+                  index % 2 === 0 ? 'bg-white/5' : 'bg-transparent'
               }`}
             >
-              <div className="col-span-2 text-center font-bold text-2xl text-gold-400 print-black-text font-mono drop-shadow-sm">
+              <div className="col-span-2 text-center font-bold text-2xl text-gold-400 font-mono drop-shadow-sm">
                 {item.quantity}
               </div>
-              <div className="col-span-9 text-right pr-4 text-xl text-gold-100 print-black-text font-medium leading-relaxed">
+              <div className="col-span-9 text-right pr-4 text-xl text-gold-100 font-medium leading-relaxed">
                 {item.name}
               </div>
               <div className="col-span-1 text-center no-print opacity-0 group-hover:opacity-100 transition-opacity">
@@ -57,7 +57,7 @@ export const OrderList: React.FC<OrderListProps> = ({ items, onDelete }) => {
 
       {/* Summary for Print */}
       <div className="mt-8 pt-4 border-t border-gold-600 hidden print:block">
-        <p className="text-right text-black font-bold">إجمالي عدد الأصناف: {items.length}</p>
+        <p className="text-right text-gold-500 font-bold">إجمالي عدد الأصناف: {items.length}</p>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onPrint }) => {
   return (
-    <div className="flex flex-col items-center justify-center pt-8 pb-4 relative print:pt-4">
+    <div className="flex flex-col items-center justify-center pt-8 pb-4 relative print:pt-0">
       {/* Print Button - Hidden when printing */}
       <button 
         onClick={onPrint}
@@ -29,17 +29,17 @@ export const Header: React.FC<HeaderProps> = ({ onPrint }) => {
       </div>
 
       {/* Main Name */}
-      <h1 className="text-5xl font-extrabold tracking-wide mb-2 drop-shadow-md print-black-text gold-gradient-text pb-1">
+      <h1 className="text-5xl font-extrabold tracking-wide mb-2 drop-shadow-md gold-gradient-text pb-1">
         هشــام محمــد
       </h1>
 
       {/* Subtitle */}
-      <h2 className="text-xl text-gold-200 font-medium tracking-wide print-black-text">
+      <h2 className="text-xl text-gold-200 font-medium tracking-wide">
         أعمال كهرباء متكاملة - تأسيس وصيانة
       </h2>
 
       {/* Divider */}
-      <div className="w-full max-w-2xl h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mt-6 rounded-full opacity-80 print-border print:bg-none print:bg-black"></div>
+      <div className="w-full max-w-2xl h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mt-6 rounded-full opacity-80 print-border"></div>
     </div>
   );
 };
