@@ -7,7 +7,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onPrint }) => {
   return (
-    <div className="flex flex-col items-center justify-center pt-8 pb-4 relative print:pt-2 print:pb-2">
+    <div className="flex flex-col items-center justify-center pt-8 pb-4 relative print:pt-0 print:pb-0">
       {/* Print Button - Hidden when printing */}
       <button 
         onClick={onPrint}
@@ -18,28 +18,26 @@ export const Header: React.FC<HeaderProps> = ({ onPrint }) => {
       </button>
 
       {/* Logo Icon */}
-      <div className="mb-2 relative print:mb-1">
-        <Zap className="text-gold-200 fill-current drop-shadow-[0_0_15px_rgba(253,230,138,0.4)] w-16 h-16 print:w-10 print:h-10" strokeWidth={1.5} />
-        {/* Decorative dots/lines - Hide detailed decorations in print to keep it clean or scale them */}
-        <div className="absolute top-1/2 -left-8 w-8 h-0.5 bg-gold-200 rounded-full print:w-4 print:-left-5"></div>
-        <div className="absolute top-1/2 -left-8 w-2 h-2 bg-gold-200 rounded-full -mt-[3px] shadow-[0_0_5px_#FDE68A] print:hidden"></div>
-        
-        <div className="absolute top-1/2 -right-8 w-8 h-0.5 bg-gold-200 rounded-full print:w-4 print:-right-5"></div>
-        <div className="absolute top-1/2 -right-2 w-2 h-2 bg-gold-200 rounded-full -mt-[3px] shadow-[0_0_5px_#FDE68A] print:hidden"></div>
+      <div className="mb-4 relative print:mb-2 flex items-center justify-center">
+        {/* Horizontal lines next to logo - visual flourish */}
+        <div className="hidden print:block absolute right-14 top-1/2 w-10 h-0.5 bg-gold-500/50"></div>
+        <div className="hidden print:block absolute left-14 top-1/2 w-10 h-0.5 bg-gold-500/50"></div>
+
+        <Zap className="text-gold-200 fill-gold-400 drop-shadow-[0_0_15px_rgba(253,230,138,0.4)] w-20 h-20 print:w-12 print:h-12" strokeWidth={1.5} />
       </div>
 
       {/* Main Name */}
-      <h1 className="text-5xl font-extrabold tracking-wide mb-2 drop-shadow-md text-gold-200 pb-1 print:text-3xl print:mb-0">
+      <h1 className="text-5xl font-black tracking-wide mb-3 text-gold-200 print:text-gold-400 print:text-4xl print:mb-1 print:font-extrabold uppercase" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
         هشــام محمــد
       </h1>
 
       {/* Subtitle */}
-      <h2 className="text-xl text-gold-200 font-medium tracking-wide print:text-sm">
+      <h2 className="text-xl text-gold-300 font-bold tracking-wide print:text-lg print:text-gold-500">
         أعمال كهرباء متكاملة - تأسيس وصيانة
       </h2>
 
-      {/* Divider */}
-      <div className="w-full max-w-2xl h-1 bg-gradient-to-r from-transparent via-gold-200 to-transparent mt-6 rounded-full opacity-60 print-border print:mt-2 print:h-0.5"></div>
+      {/* Divider for Screen Only */}
+      <div className="w-full max-w-2xl h-1 bg-gradient-to-r from-transparent via-gold-200 to-transparent mt-6 rounded-full opacity-60 print:hidden"></div>
     </div>
   );
 };

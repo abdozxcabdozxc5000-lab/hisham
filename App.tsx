@@ -47,11 +47,14 @@ const App: React.FC = () => {
         {/* Print Layout Structure: Strict CSS Table */}
         <div className="w-full flex-grow flex flex-col print:table print:w-full">
           
-          {/* Header Group: Repeats on every page */}
+          {/* Header Group: THIS REPEATS ON EVERY PAGE */}
           <div className="print:table-header-group">
-            <div className="print:h-4"></div> {/* Top margin spacer */}
-            <Header onPrint={handlePrint} />
-            <div className="hidden print:block h-4"></div> {/* Spacer between header and content */}
+            {/* The header component will be repeated at the top of every page automatically by the browser */}
+            <div className="print:block">
+               <div className="print:h-2"></div>
+               <Header onPrint={handlePrint} />
+               <div className="hidden print:block h-6 border-b border-gold-500/30 mb-4"></div> {/* Separator */}
+            </div>
           </div>
           
           {/* Body Group: Main Content wrapped in Row/Cell for stability */}
