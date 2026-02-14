@@ -39,21 +39,18 @@
       /* إعدادات الصفحة للطباعة */
       @page {
         size: auto;
-        margin: 0mm; /* إزالة الهوامش تماماً لجعل الخلفية السوداء تغطي الورقة بالكامل */
+        margin: 0mm; /* إزالة الهوامش للسماح بالخلفية السوداء */
       }
 
-      /* تنسيقات الطباعة لتطابق الشاشة تماماً */
+      /* تنسيقات الطباعة */
       @media print {
         body {
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
           background-color: #000000 !important;
           color: #FFD700 !important;
-          /* إضافة هوامش داخلية فقط للمحتوى لكي لا يلتصق بالحواف */
-          padding-top: 0 !important;
-          padding-left: 5mm !important;
-          padding-right: 5mm !important;
-          padding-bottom: 0 !important;
+          /* إضافة هوامش داخلية لتعويض هوامش الصفحة */
+          padding: 0 !important;
         }
         
         /* إجبار الخلفيات الملونة على الظهور */
@@ -66,30 +63,21 @@
           display: none !important;
         }
         
-        .print-border {
-          border-color: #D4AF37 !important;
+        /* Ensure tables break correctly */
+        table { 
+            page-break-inside: auto;
+            width: 100% !important;
         }
-
-        /* Fix for repeating headers */
-        .print\:table-header-group {
-          display: table-header-group !important;
+        tr { 
+            page-break-inside: avoid; 
+            page-break-after: auto; 
         }
-        .print\:table-footer-group {
-          display: table-footer-group !important;
-        }
-        .print\:table-row-group {
-          display: table-row-group !important;
-        }
-        .print\:table-row {
-            display: table-row !important;
-        }
-        .print\:table-cell {
-            display: table-cell !important;
-        }
+        thead { display: table-header-group; }
+        tfoot { display: table-footer-group; }
         
-        /* Ensure Fixed Header stays on top */
-        .fixed {
-            position: fixed !important;
+        /* Utility for forcing page breaks */
+        .page-break-inside-avoid {
+            page-break-inside: avoid;
         }
       }
       

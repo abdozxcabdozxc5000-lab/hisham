@@ -10,68 +10,62 @@ interface OrderListProps {
 export const OrderList: React.FC<OrderListProps> = ({ items, onDelete }) => {
   if (items.length === 0) {
     return (
-      <div className="text-center py-12 text-gold-600/50 border-2 border-dashed border-gold-600/30 rounded-xl max-w-2xl mx-auto">
+      <div className="text-center py-12 text-gold-600/50 border-2 border-dashed border-gold-600/30 rounded-xl max-w-2xl mx-auto print:hidden">
         <p className="text-lg text-gold-500">القائمة فارغة. ابدأ بإضافة طلبات الكهرباء.</p>
       </div>
     );
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-2 print:pb-4">
-      <div className="bg-transparent overflow-hidden print:overflow-visible">
-        {/* Header Row */}
-        <div className="grid grid-cols-12 gap-4 pb-2 border-b border-gold-600/30 text-gold-500 font-bold text-lg mb-2 px-4 print:mb-4 print:pb-2 print:text-lg print:px-2 print:border-gold-500">
-            <div className="col-span-2 text-center">العدد</div>
-            <div className="col-span-9 text-right pr-4">الصنف</div>
-            <div className="col-span-1 no-print"></div>
-        </div>
-
-        {/* Items */}
-        <ul className="space-y-2 print:space-y-0 print:block">
+    <div className="w-full max-w-3xl mx-auto">
+      <table className="w-full border-collapse">
+        <thead className="print:table-header-group">
+            <tr className="border-b border-gold-600/30 text-gold-500 print:border-gold-500">
+                <th className="py-3 px-4 text-center text-lg font-bold w-1/6">العدد</th>
+                <th className="py-3 px-4 text-right text-lg font-bold w-4/6">الصنف</th>
+                <th className="py-3 px-4 w-1/6 no-print"></th>
+            </tr>
+        </thead>
+        <tbody className="print:table-row-group">
           {items.map((item, index) => {
-            // Check if this is the item that should start a new page
-            // The user requested specifically for "لمبة اسبوط" with quantity 130 to start on a new page
-            const forcePageBreak = item.quantity === 130 && item.name.includes('لمبة اسبوط');
-
-            return (
-              <li 
+             // Specific logic for forcing page breaks if needed
+             const forcePageBreak = item.quantity === 130 && item.name.includes('لمبة اسبوط');
+             
+             return (
+              <tr 
                 key={item.id} 
                 style={{ 
-                  pageBreakInside: 'avoid', 
-                  breakInside: 'avoid',
-                  pageBreakBefore: forcePageBreak ? 'always' : 'auto',
-                  breakBefore: forcePageBreak ? 'page' : 'auto'
+                    pageBreakInside: 'avoid',
+                    breakInside: 'avoid',
+                    pageBreakBefore: forcePageBreak ? 'always' : 'auto'
                 }}
-                className={`grid grid-cols-12 gap-4 items-center p-3 rounded-lg hover:bg-gold-500/10 transition-colors group print:py-2 print:my-1 print:px-2 print:rounded-none print:border-b print:border-gold-600/20 ${
+                className={`group transition-colors ${
                     index % 2 === 0 ? 'bg-white/5 print:bg-transparent' : 'bg-transparent'
-                }`}
+                } hover:bg-gold-500/10 print:border-b print:border-gold-600/20`}
               >
-                <div className="col-span-2 text-center font-bold text-2xl text-gold-200 font-mono drop-shadow-sm print:text-xl">
+                <td className="py-3 px-4 text-center font-bold text-2xl text-gold-200 font-mono drop-shadow-sm print:text-xl print:text-gold-400 align-middle">
                   {item.quantity}
-                </div>
-                <div className="col-span-9 text-right pr-4 text-xl text-gold-200 font-bold leading-relaxed print:text-lg print:pr-2 print:font-bold">
+                </td>
+                <td className="py-3 px-4 text-right text-xl text-gold-200 font-bold leading-relaxed print:text-lg print:text-gold-400 align-middle">
                   {item.name}
-                </div>
-                <div className="col-span-1 text-center no-print opacity-0 group-hover:opacity-100 transition-opacity">
+                </td>
+                <td className="py-3 px-4 text-center no-print align-middle">
                   <button
                     onClick={() => onDelete(item.id)}
-                    className="text-red-500 hover:text-red-400 p-2 rounded-full hover:bg-red-500/10"
+                    className="text-red-500 hover:text-red-400 p-2 rounded-full hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition-opacity"
                     title="حذف"
                   >
                     <Trash2 size={20} />
                   </button>
-                </div>
-              </li>
+                </td>
+              </tr>
             );
           })}
-        </ul>
-      </div>
+        </tbody>
+      </table>
 
       {/* Summary for Print */}
-      <div 
-        style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}
-        className="mt-8 pt-4 border-t border-gold-600 hidden print:block print:mt-4 print:pt-4"
-      >
+      <div className="mt-8 pt-4 border-t border-gold-600 hidden print:block print:mt-4 print:pt-4 page-break-inside-avoid break-inside-avoid">
         <p className="text-right text-gold-500 font-bold print:text-lg">إجمالي عدد الأصناف: {items.length}</p>
       </div>
     </div>
