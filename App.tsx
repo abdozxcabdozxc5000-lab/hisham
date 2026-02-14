@@ -81,8 +81,8 @@ const App: React.FC = () => {
           <div className="hidden print:table-footer-group">
              <div className="print:table-row">
                  <div className="print:table-cell">
-                    {/* Increased height to 70mm as requested to ensure absolutely no overlap with fixed footer */}
-                    <div style={{ height: '70mm' }}></div>
+                    {/* Increased height to 120mm as requested to ensure absolutely no overlap with fixed footer */}
+                    <div style={{ height: '120mm' }}></div>
                  </div>
              </div>
           </div>
