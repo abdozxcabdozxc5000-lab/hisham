@@ -17,7 +17,7 @@ export const OrderList: React.FC<OrderListProps> = ({ items, onDelete }) => {
   }
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-2">
+    <div className="w-full max-w-3xl mx-auto px-2 print:pb-4">
       <div className="bg-transparent overflow-hidden print:overflow-visible">
         {/* Header Row */}
         <div className="grid grid-cols-12 gap-4 pb-2 border-b border-gold-600/30 text-gold-500 font-bold text-lg mb-2 px-4 print:mb-4 print:pb-2 print:text-lg print:px-2 print:border-gold-500">
@@ -31,7 +31,8 @@ export const OrderList: React.FC<OrderListProps> = ({ items, onDelete }) => {
           {items.map((item, index) => (
             <li 
               key={item.id} 
-              className={`grid grid-cols-12 gap-4 items-center p-3 rounded-lg hover:bg-gold-500/10 transition-colors group print:py-2 print:my-1 print:px-2 print:rounded-none print:border-b print:border-gold-600/20 print:break-inside-avoid print:break-after-auto ${
+              style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}
+              className={`grid grid-cols-12 gap-4 items-center p-3 rounded-lg hover:bg-gold-500/10 transition-colors group print:py-2 print:my-1 print:px-2 print:rounded-none print:border-b print:border-gold-600/20 ${
                   index % 2 === 0 ? 'bg-white/5 print:bg-transparent' : 'bg-transparent'
               }`}
             >
@@ -56,7 +57,10 @@ export const OrderList: React.FC<OrderListProps> = ({ items, onDelete }) => {
       </div>
 
       {/* Summary for Print */}
-      <div className="mt-8 pt-4 border-t border-gold-600 hidden print:block print:mt-8 print:pt-4 print:break-inside-avoid">
+      <div 
+        style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}
+        className="mt-8 pt-4 border-t border-gold-600 hidden print:block print:mt-4 print:pt-4"
+      >
         <p className="text-right text-gold-500 font-bold print:text-lg">إجمالي عدد الأصناف: {items.length}</p>
       </div>
     </div>
