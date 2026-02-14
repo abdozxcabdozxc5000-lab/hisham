@@ -28,31 +28,42 @@ export const OrderList: React.FC<OrderListProps> = ({ items, onDelete }) => {
 
         {/* Items */}
         <ul className="space-y-2 print:space-y-0 print:block">
-          {items.map((item, index) => (
-            <li 
-              key={item.id} 
-              style={{ pageBreakInside: 'avoid', breakInside: 'avoid' }}
-              className={`grid grid-cols-12 gap-4 items-center p-3 rounded-lg hover:bg-gold-500/10 transition-colors group print:py-2 print:my-1 print:px-2 print:rounded-none print:border-b print:border-gold-600/20 ${
-                  index % 2 === 0 ? 'bg-white/5 print:bg-transparent' : 'bg-transparent'
-              }`}
-            >
-              <div className="col-span-2 text-center font-bold text-2xl text-gold-400 font-mono drop-shadow-sm print:text-xl">
-                {item.quantity}
-              </div>
-              <div className="col-span-9 text-right pr-4 text-xl text-gold-100 font-medium leading-relaxed print:text-lg print:pr-2 print:font-bold">
-                {item.name}
-              </div>
-              <div className="col-span-1 text-center no-print opacity-0 group-hover:opacity-100 transition-opacity">
-                <button
-                  onClick={() => onDelete(item.id)}
-                  className="text-red-500 hover:text-red-400 p-2 rounded-full hover:bg-red-500/10"
-                  title="حذف"
-                >
-                  <Trash2 size={20} />
-                </button>
-              </div>
-            </li>
-          ))}
+          {items.map((item, index) => {
+            // Check if this is the item that should start a new page
+            // The user requested specifically for "لمبة اسبوط" with quantity 130 to start on a new page
+            const forcePageBreak = item.quantity === 130 && item.name.includes('لمبة اسبوط');
+
+            return (
+              <li 
+                key={item.id} 
+                style={{ 
+                  pageBreakInside: 'avoid', 
+                  breakInside: 'avoid',
+                  pageBreakBefore: forcePageBreak ? 'always' : 'auto',
+                  breakBefore: forcePageBreak ? 'page' : 'auto'
+                }}
+                className={`grid grid-cols-12 gap-4 items-center p-3 rounded-lg hover:bg-gold-500/10 transition-colors group print:py-2 print:my-1 print:px-2 print:rounded-none print:border-b print:border-gold-600/20 ${
+                    index % 2 === 0 ? 'bg-white/5 print:bg-transparent' : 'bg-transparent'
+                }`}
+              >
+                <div className="col-span-2 text-center font-bold text-2xl text-gold-400 font-mono drop-shadow-sm print:text-xl">
+                  {item.quantity}
+                </div>
+                <div className="col-span-9 text-right pr-4 text-xl text-gold-100 font-medium leading-relaxed print:text-lg print:pr-2 print:font-bold">
+                  {item.name}
+                </div>
+                <div className="col-span-1 text-center no-print opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button
+                    onClick={() => onDelete(item.id)}
+                    className="text-red-500 hover:text-red-400 p-2 rounded-full hover:bg-red-500/10"
+                    title="حذف"
+                  >
+                    <Trash2 size={20} />
+                  </button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
