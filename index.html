@@ -36,14 +36,11 @@
       }
     </script>
     <style>
-      /* إخفاء الهيدر والفوتر الافتراضي للمتصفح (التاريخ والرابط) */
+      /* إعدادات الصفحة للطباعة */
       @page {
         size: auto;
-        /* نترك هامش سفلي كافٍ للفوتر المثبت لضمان عدم تغطية المحتوى */
-        margin-top: 0mm;
-        margin-left: 0mm;
-        margin-right: 0mm;
-        margin-bottom: 25mm;
+        /* هوامش صغيرة للحفاظ على المحتوى داخل الورقة، والفوتر سيتم التعامل معه عبر Spacer */
+        margin: 5mm;
       }
 
       /* تنسيقات الطباعة لتطابق الشاشة تماماً */
@@ -53,8 +50,6 @@
           print-color-adjust: exact !important;
           background-color: #000000 !important; /* فرض الخلفية السوداء */
           color: #FFD700 !important; /* فرض النص الذهبي */
-          padding: 5mm; /* هوامش داخلية */
-          /* padding-bottom لم يعد ضرورياً هنا لأننا نستخدم margin-bottom في @page */
         }
         
         /* إجبار الخلفيات الملونة على الظهور */

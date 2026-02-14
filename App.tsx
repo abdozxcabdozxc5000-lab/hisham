@@ -90,7 +90,12 @@ const App: React.FC = () => {
             </main>
           </div>
         
-          {/* Removed footer spacer, using @page margin instead */}
+          {/* Footer Spacer Group - Critical for pagination */}
+          {/* This invisible spacer pushes content to the next page if it would otherwise overlap with the fixed footer */}
+          <div className="hidden print:table-footer-group">
+             {/* Height matches the Footer height approx (20mm) */}
+             <div className="h-[20mm] w-full"></div>
+          </div>
         </div>
 
         {/* The actual Fixed Footer */}

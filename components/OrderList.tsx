@@ -18,7 +18,7 @@ export const OrderList: React.FC<OrderListProps> = ({ items, onDelete }) => {
 
   return (
     <div className="w-full max-w-3xl mx-auto px-2">
-      <div className="bg-transparent overflow-hidden">
+      <div className="bg-transparent overflow-hidden print:overflow-visible">
         {/* Header Row */}
         <div className="grid grid-cols-12 gap-4 pb-2 border-b border-gold-600/30 text-gold-500 font-bold text-lg mb-2 px-4 print:mb-1 print:pb-1 print:text-base print:px-2">
             <div className="col-span-2 text-center">العدد</div>
@@ -27,11 +27,11 @@ export const OrderList: React.FC<OrderListProps> = ({ items, onDelete }) => {
         </div>
 
         {/* Items */}
-        <ul className="space-y-2 print:space-y-0">
+        <ul className="space-y-2 print:space-y-0 print:block">
           {items.map((item, index) => (
             <li 
               key={item.id} 
-              className={`grid grid-cols-12 gap-4 items-center p-3 rounded-lg hover:bg-gold-500/10 transition-colors group print:py-1 print:px-2 print:rounded-none print:border-b print:border-gold-600/10 print:break-inside-avoid ${
+              className={`grid grid-cols-12 gap-4 items-center p-3 rounded-lg hover:bg-gold-500/10 transition-colors group print:py-1 print:px-2 print:rounded-none print:border-b print:border-gold-600/10 print:break-inside-avoid print:break-after-auto ${
                   index % 2 === 0 ? 'bg-white/5 print:bg-transparent' : 'bg-transparent'
               }`}
             >
