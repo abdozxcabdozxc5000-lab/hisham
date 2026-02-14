@@ -61,23 +61,33 @@ const App: React.FC = () => {
          <div className="absolute top-1/2 left-0 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="container mx-auto px-4 z-10 flex flex-col flex-grow max-w-4xl print:pb-20">
-        <Header onPrint={handlePrint} />
+      <div className="container mx-auto px-4 z-10 flex flex-col flex-grow max-w-4xl print:table print:max-w-none print:w-full print:block">
         
-        <main className="flex-grow py-8 print:py-0">
-          <AddItemForm onAdd={handleAddItem} />
-          
-          <div className="relative">
-            {/* Corner borders similar to the image card style - hide in print to save space */}
-            <div className="hidden md:block print:hidden absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-gold-500 rounded-tl-lg"></div>
-            <div className="hidden md:block print:hidden absolute -top-4 -right-4 w-8 h-8 border-t-2 border-r-2 border-gold-500 rounded-tr-lg"></div>
+        {/* Header Section - Uses table-header-group in print to repeat on every page */}
+        <div className="w-full print:table-header-group">
+          <Header onPrint={handlePrint} />
+        </div>
+        
+        {/* Main Content - Uses table-row-group in print */}
+        <div className="w-full flex-grow print:table-row-group">
+          <main className="py-8 print:py-0">
+            <AddItemForm onAdd={handleAddItem} />
             
-            <OrderList items={items} onDelete={handleDeleteItem} />
+            <div className="relative">
+              {/* Corner borders similar to the image card style - hide in print to save space */}
+              <div className="hidden md:block print:hidden absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-gold-500 rounded-tl-lg"></div>
+              <div className="hidden md:block print:hidden absolute -top-4 -right-4 w-8 h-8 border-t-2 border-r-2 border-gold-500 rounded-tr-lg"></div>
+              
+              <OrderList items={items} onDelete={handleDeleteItem} />
+              
+              <div className="hidden md:block print:hidden absolute -bottom-4 -left-4 w-8 h-8 border-b-2 border-l-2 border-gold-500 rounded-bl-lg"></div>
+              <div className="hidden md:block print:hidden absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-gold-500 rounded-br-lg"></div>
+            </div>
             
-            <div className="hidden md:block print:hidden absolute -bottom-4 -left-4 w-8 h-8 border-b-2 border-l-2 border-gold-500 rounded-bl-lg"></div>
-            <div className="hidden md:block print:hidden absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-gold-500 rounded-br-lg"></div>
-          </div>
-        </main>
+            {/* Print spacer to ensure content doesn't touch the fixed footer */}
+            <div className="hidden print:block w-full h-8"></div>
+          </main>
+        </div>
 
         <Footer />
       </div>
