@@ -39,8 +39,10 @@
       /* إعدادات الصفحة للطباعة */
       @page {
         size: auto;
-        /* هوامش صغيرة للحفاظ على المحتوى داخل الورقة، والفوتر سيتم التعامل معه عبر Spacer */
-        margin: 5mm;
+        margin-top: 10mm;
+        margin-bottom: 30mm; /* هامش سفلي كبير لحماية المحتوى من الفوتر المثبت */
+        margin-left: 10mm;
+        margin-right: 10mm;
       }
 
       /* تنسيقات الطباعة لتطابق الشاشة تماماً */
@@ -48,8 +50,9 @@
         body {
           -webkit-print-color-adjust: exact !important;
           print-color-adjust: exact !important;
-          background-color: #000000 !important; /* فرض الخلفية السوداء */
-          color: #FFD700 !important; /* فرض النص الذهبي */
+          background-color: #000000 !important;
+          color: #FFD700 !important;
+          padding: 0 !important; /* نعتمد على هوامش الصفحة */
         }
         
         /* إجبار الخلفيات الملونة على الظهور */
@@ -62,7 +65,6 @@
           display: none !important;
         }
         
-        /* إزالة الحدود البيضاء إن وجدت */
         .print-border {
           border-color: #D4AF37 !important;
         }
