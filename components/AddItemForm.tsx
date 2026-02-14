@@ -29,7 +29,7 @@ export const AddItemForm: React.FC<AddItemFormProps> = ({ onAdd }) => {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="مثال: لفة سلك 3 مم سويدي"
-            className="w-full bg-dark-900 border border-gold-600/50 rounded-lg p-3 text-gold-100 placeholder-gold-600/50 focus:border-gold-400 focus:ring-1 focus:ring-gold-400 focus:outline-none transition-all text-lg"
+            className="w-full bg-dark-900 border border-gold-600/50 rounded-lg p-3 text-gold-200 placeholder-gold-600/50 focus:border-gold-400 focus:ring-1 focus:ring-gold-400 focus:outline-none transition-all text-lg"
             />
         </div>
 
@@ -40,7 +40,7 @@ export const AddItemForm: React.FC<AddItemFormProps> = ({ onAdd }) => {
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
             placeholder="0"
-            className="w-full bg-dark-900 border border-gold-600/50 rounded-lg p-3 text-gold-100 placeholder-gold-600/50 focus:border-gold-400 focus:ring-1 focus:ring-gold-400 focus:outline-none transition-all text-lg text-center"
+            className="w-full bg-dark-900 border border-gold-600/50 rounded-lg p-3 text-gold-200 placeholder-gold-600/50 focus:border-gold-400 focus:ring-1 focus:ring-gold-400 focus:outline-none transition-all text-lg text-center"
             />
         </div>
 

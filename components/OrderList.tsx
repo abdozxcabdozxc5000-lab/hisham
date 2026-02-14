@@ -46,10 +46,10 @@ export const OrderList: React.FC<OrderListProps> = ({ items, onDelete }) => {
                     index % 2 === 0 ? 'bg-white/5 print:bg-transparent' : 'bg-transparent'
                 }`}
               >
-                <div className="col-span-2 text-center font-bold text-2xl text-gold-400 font-mono drop-shadow-sm print:text-xl">
+                <div className="col-span-2 text-center font-bold text-2xl text-gold-200 font-mono drop-shadow-sm print:text-xl">
                   {item.quantity}
                 </div>
-                <div className="col-span-9 text-right pr-4 text-xl text-gold-100 font-medium leading-relaxed print:text-lg print:pr-2 print:font-bold">
+                <div className="col-span-9 text-right pr-4 text-xl text-gold-200 font-bold leading-relaxed print:text-lg print:pr-2 print:font-bold">
                   {item.name}
                 </div>
                 <div className="col-span-1 text-center no-print opacity-0 group-hover:opacity-100 transition-opacity">
