@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { AddItemForm } from './components/AddItemForm';
 import { OrderList } from './components/OrderList';
 import { OrderItem } from './types';
 import { v4 as uuidv4 } from 'uuid';
-
-// Simple UUID generator for browser environment since we don't need crypto-secure uniqueness for a UI list
-const generateId = () => Math.random().toString(36).substr(2, 9);
 
 const App: React.FC = () => {
   const [items, setItems] = useState<OrderItem[]>([
@@ -20,7 +17,7 @@ const App: React.FC = () => {
 
   const handleAddItem = (quantity: number, name: string) => {
     const newItem: OrderItem = {
-      id: generateId(),
+      id: uuidv4(),
       name,
       quantity,
     };
