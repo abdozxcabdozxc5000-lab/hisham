@@ -7,7 +7,14 @@ import { OrderItem } from './types';
 import { v4 as uuidv4 } from 'uuid';
 
 const App: React.FC = () => {
-  const [items, setItems] = useState<OrderItem[]>([]);
+  // Initialize with 20 test items as requested to test pagination/footer overlap
+  const [items, setItems] = useState<OrderItem[]>(
+    Array.from({ length: 20 }, (_, i) => ({
+      id: uuidv4(),
+      name: `بند تجريبي رقم ${i + 1}`,
+      quantity: i + 1,
+    }))
+  );
 
   const handleAddItem = (quantity: number, name: string) => {
     const newItem: OrderItem = {
@@ -64,9 +71,9 @@ const App: React.FC = () => {
           </div>
 
           {/* Footer Spacer: Keeps space at the bottom of pages for the fixed footer */}
-          {/* زيادة المساحة بشكل كبير جداً (50mm) لضمان عدم اختفاء البنود خلف الفوتر */}
+          {/* زيادة ارتفاع الفاصل ليقوم بدفع العناصر للصفحة التالية بدلاً من اختفائها خلف الفوتر */}
           <div className="hidden print:table-footer-group">
-             <div className="h-[50mm]"></div>
+             <div style={{ height: '150px' }}>&nbsp;</div>
           </div>
         </div>
 
