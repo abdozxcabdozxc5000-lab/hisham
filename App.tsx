@@ -18,6 +18,7 @@ const App: React.FC = () => {
     { id: '8', quantity: 50, name: 'لقمة بريزه' },
     { id: '9', quantity: 25, name: 'بريزه مجوفه' },
     { id: '10', quantity: 250, name: 'سداده' },
+    { id: '27', quantity: 1, name: 'بريزة دش' },
     { id: '11', quantity: 2, name: 'بريزة تليفون' },
     { id: '12', quantity: 14, name: 'مفتاح 2 فاز على علبه ماجيك' },
     { id: '13', quantity: 1, name: 'مفتاح جرس' },
@@ -33,6 +34,7 @@ const App: React.FC = () => {
     { id: '23', quantity: 10, name: 'مفتاح هاجر 25' },
     { id: '24', quantity: 3, name: 'لمبة اشاره هاجر' },
     { id: '25', quantity: 1, name: 'قاطع 100 امبير هاجر 3 فاز' },
+    { id: '28', quantity: 1, name: 'مفتاح دايمر' },
     { id: '26', quantity: 3, name: 'مفتاح شطر' },
   ]);
 
