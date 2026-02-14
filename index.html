@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>هشام محمد - أعمال كهرباء متكاملة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Tajawal', 'sans-serif'],
+            },
+            colors: {
+              gold: {
+                100: '#FFF9C4', // Very light gold/cream
+                200: '#FDE68A', // Pale gold
+                300: '#FCD34D', // Light gold
+                400: '#FFD700', // Standard Gold (Bright)
+                500: '#D4AF37', // Metallic Gold (Rich)
+                600: '#B8860B', // Dark Goldenrod
+                700: '#856404', // Dark Gold
+              },
+              dark: {
+                900: '#000000', // Pure black for better contrast
+                800: '#121212', // Off black
+                700: '#212121',
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      /* Print specific overrides to save ink but keep layout structure */
+      @media print {
+        body {
+          -webkit-print-color-adjust: exact;
+        }
+        .no-print {
+          display: none !important;
+        }
+        .print-black-text {
+          color: black !important;
+          background: transparent !important;
+          -webkit-background-clip: unset !important;
+          background-clip: unset !important;
+          text-fill-color: black !important;
+          -webkit-text-fill-color: black !important;
+        }
+        .print-white-bg {
+          background-color: white !important;
+        }
+        .print-border {
+          border-color: black !important;
+        }
+      }
+      
+      /* Gold Gradient Animation */
+      @keyframes shine {
+        0% { background-position: 200% center; }
+        100% { background-position: -200% center; }
+      }
+      .gold-gradient-text {
+        background: linear-gradient(to right, #D4AF37 20%, #FFD700 40%, #FFD700 60%, #D4AF37 80%);
+        background-size: 200% auto;
+        color: #D4AF37;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shine 5s linear infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.564.0",
+    "uuid": "https://esm.sh/uuid@^13.0.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+</head>
+  <body class="bg-dark-900 text-gold-400 font-sans min-h-screen">
+    <div id="root"></div>
+  </body>
+</html>
