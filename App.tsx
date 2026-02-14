@@ -65,18 +65,19 @@ const App: React.FC = () => {
           <div className="print:table-header-group">
             <div className="print:table-row">
               <div className="print:table-cell w-full">
-                 {/* Height matches the Fixed Header (approx 55mm) */}
-                 <div className="hidden print:block h-[55mm]"></div> 
+                 {/* Reduced Height to give more content space */}
+                 <div className="hidden print:block h-[40mm]"></div> 
               </div>
             </div>
           </div>
           
           {/* 2. FOOTER SPACER (Tfoot) */}
-          {/* Reserves 120mm at the bottom of every page for the Fixed Footer */}
+          {/* Reserves space at the bottom of every page for the Fixed Footer */}
           <div className="hidden print:table-footer-group">
              <div className="print:table-row">
                  <div className="print:table-cell">
-                    <div style={{ height: '120mm' }}></div>
+                    {/* Drastically reduced height. This was the primary cause of the bug. */}
+                    <div style={{ height: '35mm' }}></div>
                  </div>
              </div>
           </div>
