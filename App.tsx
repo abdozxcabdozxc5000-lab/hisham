@@ -44,23 +44,35 @@ const App: React.FC = () => {
       {/* Main Container */}
       <div className="container mx-auto px-4 z-10 flex flex-col flex-grow max-w-4xl print:block print:max-w-none print:w-full print:px-0">
         
-        {/* Print Layout Structure: Strict CSS Table */}
-        <div className="w-full flex-grow flex flex-col print:table print:w-full">
+        {/* Print Layout Structure: Use strict table display for repeating headers */}
+        {/* Using a simple div with display:table works best when direct children are groups */}
+        <div className="w-full flex-grow flex flex-col print:table print:w-full print:border-collapse">
           
-          {/* Header Group: THIS REPEATS ON EVERY PAGE */}
+          {/* 1. Header Group (Thead): Repeats on every page */}
           <div className="print:table-header-group">
-            {/* The header component will be repeated at the top of every page automatically by the browser */}
-            <div className="print:block">
-               <div className="print:h-2"></div>
-               <Header onPrint={handlePrint} />
-               <div className="hidden print:block h-6 border-b border-gold-500/30 mb-4"></div> {/* Separator */}
+            <div className="print:table-row">
+              <div className="print:table-cell w-full">
+                <Header onPrint={handlePrint} />
+                <div className="hidden print:block h-1 bg-gold-500 w-full mb-6 mt-2 opacity-50"></div>
+              </div>
             </div>
           </div>
           
-          {/* Body Group: Main Content wrapped in Row/Cell for stability */}
+          {/* 2. Footer Spacer Group (Tfoot): Reserves space on every page */}
+          {/* Placed before Body in DOM for better browser support in repeating tfoot */}
+          <div className="hidden print:table-footer-group">
+             <div className="print:table-row">
+                 <div className="print:table-cell">
+                    {/* Increased height to 120mm to ensure items move to next page well before the fixed footer */}
+                    <div style={{ height: '120mm' }}></div>
+                 </div>
+             </div>
+          </div>
+
+          {/* 3. Body Group (Tbody): Main Content */}
           <div className="print:table-row-group">
             <div className="print:table-row">
-                <div className="print:table-cell print:align-top">
+                <div className="print:table-cell print:align-top w-full">
                     <main className="py-8 print:py-0">
                     <AddItemForm onAdd={handleAddItem} />
                     
@@ -80,18 +92,9 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          {/* Footer Spacer Group: Reserves space at bottom of EVERY page */}
-          <div className="hidden print:table-footer-group">
-             <div className="print:table-row">
-                 <div className="print:table-cell">
-                    {/* Increased height to 120mm as requested to ensure absolutely no overlap with fixed footer */}
-                    <div style={{ height: '120mm' }}></div>
-                 </div>
-             </div>
-          </div>
         </div>
 
-        {/* Fixed Footer: Sits on top of the page at the bottom */}
+        {/* Fixed Footer: Sits on top of the page at the bottom (outside the flow) */}
         <Footer />
       </div>
     </div>

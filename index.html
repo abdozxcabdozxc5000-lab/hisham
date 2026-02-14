@@ -50,9 +50,9 @@
           background-color: #000000 !important;
           color: #FFD700 !important;
           /* إضافة هوامش داخلية لتعويض هوامش الصفحة المحذوفة */
-          padding-top: 10mm !important;
-          padding-left: 10mm !important;
-          padding-right: 10mm !important;
+          padding-top: 5mm !important;
+          padding-left: 5mm !important;
+          padding-right: 5mm !important;
           padding-bottom: 0 !important;
         }
         
@@ -68,6 +68,23 @@
         
         .print-border {
           border-color: #D4AF37 !important;
+        }
+
+        /* Fix for repeating headers */
+        .print\:table-header-group {
+          display: table-header-group !important;
+        }
+        .print\:table-footer-group {
+          display: table-footer-group !important;
+        }
+        .print\:table-row-group {
+          display: table-row-group !important;
+        }
+        .print\:table-row {
+            display: table-row !important;
+        }
+        .print\:table-cell {
+            display: table-cell !important;
         }
       }
       
