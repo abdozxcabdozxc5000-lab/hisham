@@ -34,42 +34,54 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col relative bg-dark-900">
-      {/* Background decoration */}
+    <div className="min-h-screen flex flex-col relative bg-dark-900 print:block">
+      {/* Background decoration (Screen Only) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden no-print">
          <div className="absolute -top-20 -right-20 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl"></div>
          <div className="absolute top-1/2 left-0 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl"></div>
       </div>
 
+      {/* --- PRINT ONLY: FIXED HEADER --- */}
+      {/* This element is fixed to the top of the viewport/page. Browsers repeat fixed elements on every printed page. */}
+      <div className="hidden print:flex fixed top-0 left-0 w-full z-50 bg-dark-900 flex-col items-center justify-center pt-4 pb-2">
+         <Header onPrint={() => {}} />
+         {/* Gold Divider Line under header */}
+         <div className="w-[90%] h-0.5 bg-gold-500/50 mt-2 mx-auto"></div>
+      </div>
+
       {/* Main Container */}
       <div className="container mx-auto px-4 z-10 flex flex-col flex-grow max-w-4xl print:block print:max-w-none print:w-full print:px-0">
         
-        {/* Print Layout Structure: Use strict table display for repeating headers */}
-        {/* Using a simple div with display:table works best when direct children are groups */}
+        {/* --- SCREEN ONLY: HEADER --- */}
+        <div className="print:hidden">
+            <Header onPrint={handlePrint} />
+        </div>
+
+        {/* Print Layout Structure */}
         <div className="w-full flex-grow flex flex-col print:table print:w-full print:border-collapse">
           
-          {/* 1. Header Group (Thead): Repeats on every page */}
+          {/* 1. HEADER SPACER (Thead) */}
+          {/* This repeats on every page to push content down, making room for the Fixed Header above */}
           <div className="print:table-header-group">
             <div className="print:table-row">
               <div className="print:table-cell w-full">
-                <Header onPrint={handlePrint} />
-                <div className="hidden print:block h-1 bg-gold-500 w-full mb-6 mt-2 opacity-50"></div>
+                 {/* Height matches the Fixed Header (approx 55mm) */}
+                 <div className="hidden print:block h-[55mm]"></div> 
               </div>
             </div>
           </div>
           
-          {/* 2. Footer Spacer Group (Tfoot): Reserves space on every page */}
-          {/* Placed before Body in DOM for better browser support in repeating tfoot */}
+          {/* 2. FOOTER SPACER (Tfoot) */}
+          {/* Reserves 120mm at the bottom of every page for the Fixed Footer */}
           <div className="hidden print:table-footer-group">
              <div className="print:table-row">
                  <div className="print:table-cell">
-                    {/* Increased height to 120mm to ensure items move to next page well before the fixed footer */}
                     <div style={{ height: '120mm' }}></div>
                  </div>
              </div>
           </div>
 
-          {/* 3. Body Group (Tbody): Main Content */}
+          {/* 3. BODY CONTENT (Tbody) */}
           <div className="print:table-row-group">
             <div className="print:table-row">
                 <div className="print:table-cell print:align-top w-full">
@@ -94,7 +106,7 @@ const App: React.FC = () => {
 
         </div>
 
-        {/* Fixed Footer: Sits on top of the page at the bottom (outside the flow) */}
+        {/* Fixed Footer */}
         <Footer />
       </div>
     </div>

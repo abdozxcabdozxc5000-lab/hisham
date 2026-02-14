@@ -39,7 +39,7 @@
       /* إعدادات الصفحة للطباعة */
       @page {
         size: auto;
-        margin: 0mm; /* إزالة الهوامش تماماً لإخفاء التاريخ والرابط والحواف البيضاء */
+        margin: 0mm; /* إزالة الهوامش تماماً لجعل الخلفية السوداء تغطي الورقة بالكامل */
       }
 
       /* تنسيقات الطباعة لتطابق الشاشة تماماً */
@@ -49,8 +49,8 @@
           print-color-adjust: exact !important;
           background-color: #000000 !important;
           color: #FFD700 !important;
-          /* إضافة هوامش داخلية لتعويض هوامش الصفحة المحذوفة */
-          padding-top: 5mm !important;
+          /* إضافة هوامش داخلية فقط للمحتوى لكي لا يلتصق بالحواف */
+          padding-top: 0 !important;
           padding-left: 5mm !important;
           padding-right: 5mm !important;
           padding-bottom: 0 !important;
@@ -85,6 +85,11 @@
         }
         .print\:table-cell {
             display: table-cell !important;
+        }
+        
+        /* Ensure Fixed Header stays on top */
+        .fixed {
+            position: fixed !important;
         }
       }
       
