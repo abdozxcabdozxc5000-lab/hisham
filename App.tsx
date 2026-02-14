@@ -93,9 +93,9 @@ const App: React.FC = () => {
           </div>
 
           {/* Footer Spacer: Keeps space at the bottom of pages for the fixed footer */}
-          {/* زيادة المساحة لأننا أزلنا هامش الصفحة السفلي */}
+          {/* زيادة المساحة بشكل كبير لضمان عدم اختفاء البنود خلف الفوتر */}
           <div className="hidden print:table-footer-group">
-             <div className="h-[30mm]"></div>
+             <div className="h-[40mm]"></div>
           </div>
         </div>
 

@@ -27,11 +27,11 @@ export const OrderList: React.FC<OrderListProps> = ({ items, onDelete }) => {
         </div>
 
         {/* Items */}
-        <ul className="space-y-2 print:space-y-2 print:block">
+        <ul className="space-y-2 print:space-y-0 print:block">
           {items.map((item, index) => (
             <li 
               key={item.id} 
-              className={`grid grid-cols-12 gap-4 items-center p-3 rounded-lg hover:bg-gold-500/10 transition-colors group print:py-3 print:px-2 print:rounded-none print:border-b print:border-gold-600/20 print:break-inside-avoid print:break-after-auto ${
+              className={`grid grid-cols-12 gap-4 items-center p-3 rounded-lg hover:bg-gold-500/10 transition-colors group print:py-2 print:my-1 print:px-2 print:rounded-none print:border-b print:border-gold-600/20 print:break-inside-avoid print:break-after-auto ${
                   index % 2 === 0 ? 'bg-white/5 print:bg-transparent' : 'bg-transparent'
               }`}
             >
