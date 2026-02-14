@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
       <div className="w-full h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent mb-4 opacity-50 print:hidden"></div>
       
       {/* Footer Content */}
-      <div className="flex justify-center items-center gap-4 py-4 bg-dark-800 rounded-t-lg border-t border-gold-600/20 print:bg-black print:border-t-2 print:border-gold-500 print:rounded-none print:w-full print:py-2">
+      <div className="flex justify-center items-center gap-4 py-4 bg-dark-800 rounded-t-lg border-t border-gold-600/20 print:bg-black print:border-t-2 print:border-gold-500 print:rounded-none print:w-full print:pt-2 print:pb-6">
         <div className="flex items-center gap-2 text-2xl font-bold text-gold-400 print:text-xl">
             <span dir="ltr">01008181793</span>
             <div className="flex gap-2">
