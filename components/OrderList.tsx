@@ -61,13 +61,18 @@ export const OrderList: React.FC<OrderListProps> = ({ items, onDelete }) => {
               </tr>
             );
           })}
+          
+          {/* Summary Row - Inserted as a table row to stick to the content */}
+          <tr className="hidden print:table-row page-break-inside-avoid break-inside-avoid">
+            <td colSpan={3} className="pt-8 pb-4">
+               <div className="border-t-2 border-gold-500/50 pt-2 flex justify-end items-center">
+                 <p className="text-gold-400 font-bold text-xl ml-2">إجمالي عدد الأصناف:</p>
+                 <span className="text-gold-200 font-mono text-2xl font-bold">{items.length}</span>
+               </div>
+            </td>
+          </tr>
         </tbody>
       </table>
-
-      {/* Summary for Print */}
-      <div className="mt-8 pt-4 border-t border-gold-600 hidden print:block print:mt-4 print:pt-4 page-break-inside-avoid break-inside-avoid">
-        <p className="text-right text-gold-500 font-bold print:text-lg">إجمالي عدد الأصناف: {items.length}</p>
-      </div>
     </div>
   );
 };
