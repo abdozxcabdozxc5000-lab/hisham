@@ -7,13 +7,7 @@ import { OrderItem } from './types';
 import { v4 as uuidv4 } from 'uuid';
 
 const App: React.FC = () => {
-  const [items, setItems] = useState<OrderItem[]>(
-    Array.from({ length: 25 }, (_, i) => ({
-      id: uuidv4(),
-      name: `بند تجريبي رقم ${i + 1}`,
-      quantity: i + 1,
-    }))
-  );
+  const [items, setItems] = useState<OrderItem[]>([]);
 
   const handleAddItem = (quantity: number, name: string) => {
     const newItem: OrderItem = {

@@ -26,13 +26,13 @@ export const Header: React.FC<HeaderProps> = ({ onPrint }) => {
         <Zap className="text-gold-200 fill-gold-400 drop-shadow-[0_0_15px_rgba(253,230,138,0.4)] w-20 h-20 print:w-10 print:h-10" strokeWidth={1.5} />
       </div>
 
-      {/* Main Name */}
-      <h1 className="text-5xl font-black tracking-wide mb-3 text-gold-200 print:text-gold-400 print:text-3xl print:mb-1 print:font-extrabold uppercase" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
+      {/* Main Name - Changed print:text-gold-400 to print:text-gold-200 */}
+      <h1 className="text-5xl font-black tracking-wide mb-3 text-gold-200 print:text-gold-200 print:text-3xl print:mb-1 print:font-extrabold uppercase" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
         هشــام محمــد
       </h1>
 
       {/* Subtitle */}
-      <h2 className="text-xl text-gold-300 font-bold tracking-wide print:text-base print:text-gold-500">
+      <h2 className="text-xl text-gold-300 font-bold tracking-wide print:text-base print:text-gold-300">
         أعمال كهرباء متكاملة - تأسيس وصيانة
       </h2>
 
